@@ -202,20 +202,6 @@
         </div>
     </footer>
 
-    <script>
-        // Función para abrir la ventana modal con la imagen seleccionada
-        function openModal(imgElement) {
-            var modal = document.getElementById("photoModal");
-            var modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = imgElement.src;
-        }
-
-        // Función para cerrar la ventana modal
-        function closeModal() {
-            var modal = document.getElementById("photoModal");
-            modal.style.display = "none";
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

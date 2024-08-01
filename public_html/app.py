@@ -33,7 +33,7 @@ def login():
         session['username'] = user['username']
         return redirect(url_for('posts'))
     else:
-        return "Correo o contraseña incorrectos. Inténtalo de nuevo.", 400
+        return render_template('login_error.html'), 400
 
 @app.route('/posts')
 def posts():

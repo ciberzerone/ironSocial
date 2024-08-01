@@ -33,26 +33,29 @@ function validateRegisterForm() {
 }
 
 // Validación de inicio de sesión
-function validateLoginForm() {
+function validateLoginForm(event) {
+    event.preventDefault(); // Prevenir el envío del formulario hasta que se valide
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
+    const errorSpan = document.getElementById('login-error');
 
     if (email === '') {
-        alert('El correo electrónico es obligatorio.');
+        errorSpan.textContent = 'El correo electrónico es obligatorio.';
         return false;
     }
 
     if (!validateEmail(email)) {
-        alert('Por favor, introduce un correo electrónico válido.');
+        errorSpan.textContent = 'Por favor, introduce un correo electrónico válido.';
         return false;
     }
 
     if (password === '') {
-        alert('La contraseña es obligatoria.');
+        errorSpan.textContent = 'La contraseña es obligatoria.';
         return false;
     }
 
-    return true;
+    // Si todo es válido, enviar el formulario
+    document.getElementById('login-form').submit();
 }
 
 // Función para validar correos electrónicos
@@ -60,6 +63,7 @@ function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
+
 
 // Agregar eventos de validación al cargar la página
 window.onload = function() {
@@ -104,3 +108,17 @@ document.querySelectorAll('.post').forEach(post => {
         alert('Post clicked!');
     });
 });
+
+  // Función para abrir la ventana modal con la imagen seleccionada
+  function openModal(imgElement) {
+    var modal = document.getElementById("photoModal");
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "flex";
+    modalImg.src = imgElement.src;
+}
+
+// Función para cerrar la ventana modal
+function closeModal() {
+    var modal = document.getElementById("photoModal");
+    modal.style.display = "none";
+}
