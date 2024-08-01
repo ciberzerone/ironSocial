@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.left-section, .right-section {
+    padding: 40px;
+    width: 50%;
+}
+
+.left-section {
+    background-color: #f8f8f8;
+}
+
+.left-section h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.left-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.app-images img {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.app-links a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #0073e6;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.right-section {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 300px;
+}
+
+.login-box h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox input {
+    margin-right: 10px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0073e6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+.sign-up, .business-page {
+    background-color: #4CAF50;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    width: 100%;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-links, .language-options {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.footer-links a, .language-options a {
+    margin: 0 10px;
+    color: #0073e6;
+    text-decoration: none;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+#back-btn {
+    background: none;
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#back-btn:hover {
+    transform: scale(1.1);
+}
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}

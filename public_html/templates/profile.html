@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronSocial - Perfil de Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Perfil de {{ user['username'] }}</h1>
+        <nav>
+            <a href="/posts">Publicaciones</a>
+            <a href="/logout">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile-info">
+            <h2>Información del Perfil</h2>
+            <p><strong>Nombre:</strong> {{ user['username'] }}</p>
+            <p><strong>Email:</strong> {{ user['email'] }}</p>
+            <p><strong>GitHub:</strong> <a href="{{ user['github'] }}">{{ user['github'] }}</a></p>
+            <p><strong>Portafolio:</strong> <a href="{{ user['portfolio'] }}">{{ user['portfolio'] }}</a></p>
+        </section>
+
+        <section id="user-photos">
+            <h2>Fotos de {{ user['username'] }}</h2>
+            {% for photo in photos %}
+                <div class="photo">
+                    <img src="{{ photo['photo_url'] }}" alt="Foto">
+                    <p>{{ photo['caption'] }}</p>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 IronSocial. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
