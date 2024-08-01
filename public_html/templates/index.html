@@ -9,37 +9,41 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="left-section">
-            <h1>IronSocial para dispositivos móviles</h1>
-            <p>Instala nuestra aplicación oficial y mantente en contacto con tus amigos en cualquier momento y lugar.</p>
-            <div class="app-images">
-                <img src="{{ url_for('static', filename='img/phone1.png') }}" alt="IronSocial app screenshot 1">
-                <img src="{{ url_for('static', filename='img/phone2.png') }}" alt="IronSocial app screenshot 2">
-            </div>
-        </div>
 
-        <div class="right-section">
-            <div class="login-container">
-                <div id="email-form" class="login-box">
-                    <h2>Iniciar sesión en IronSocial</h2>
-                    <form id="email-form" method="POST" action="/login-step-1">
-                        <input type="email" id="email" name="email" placeholder="Introduce tu correo electrónico" required>
-                        <button type="submit" id="next-btn">Siguiente</button>
-                    </form>
-                </div>
-                
-                <div id="password-form" class="hidden">
-                    <button id="back-btn">← Retornar</button>
-                    <form id="password-form" method="POST" action="/login-step-2">
-                        <p id="email-display"></p>
-                        <input type="password" id="password" name="password" placeholder="Introduce tu contraseña" required>
-                        <button type="submit" id="login-btn">Continuar</button>
-                    </form>
-                    
+ 
+
+    <!-- Envuelve el contenido en un div adicional -->
+    <div class="wrapper">
+       
+       
+
+        <div class="container">
+
+         
+
+
+            <div class="left-section">
+                <h1>IronSocial para dispositivos móviles</h1>
+                <p>Instala nuestra aplicación oficial y mantente en contacto con tus amigos en cualquier momento y lugar.</p>
+                <div class="app-images">
+                    <img src="{{ url_for('static', filename='img/phone1.png') }}" alt="IronSocial app screenshot 1">
+                    <img src="{{ url_for('static', filename='img/phone2.png') }}" alt="IronSocial app screenshot 2">
                 </div>
             </div>
-        </div> 
+            
+            <div class="right-section">
+                <div class="login-container">
+                    <div class="login-box">
+                        <h2>Iniciar sesión en IronSocial</h2>
+                        <form id="login-form" method="POST" action="/login">
+                            <input type="email" id="email" name="email" placeholder="Introduce tu correo electrónico" required>
+                            <input type="password" id="password" name="password" placeholder="Introduce tu contraseña" required>
+                            <button type="submit" id="login-btn">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
     </div>
 
     <footer>

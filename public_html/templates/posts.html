@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronSocial - Publicaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles3.css') }}">
+    <style>
+        .friend-list img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .friend-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .new-post-form {
+            margin-top: 20px;
+        }
+
+        .new-post-form input[type="text"],
+        .new-post-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .new-post-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .new-post-form button:hover {
+            background-color: #45a049;
+        }
+        .random-posts img {
+            border-radius: 4px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .random-posts li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        nav a {
+            display: flex;
+            align-items: center;
+            color: #0073b1;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        nav a img {
+            margin-right: 8px; /* Espacio entre la imagen y el texto */
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        /* Estilo para la barra lateral de amigos */
+        .left-sidebar {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .left-sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #00aaff;
+            padding-bottom: 10px;
+            color: #333;
+        }
+        
+        .friend-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .friend-list li {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .friend-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .friend-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, transform 0.3s;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .friend-list a:hover {
+            background-color: #f0f0f0;
+            transform: translateX(5px);
+        }
+        
+        .friend-list img {
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+        
+        .friend-list span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Estilo para la barra lateral de otras publicaciones */
+.right-sidebar {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.right-sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+.random-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.random-posts li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.random-posts li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.random-posts a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, transform 0.3s;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.random-posts a:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.random-posts img {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.random-posts img:hover {
+    transform: scale(1.05);
+}
+
+.random-posts span {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0077cc;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.random-posts span:hover {
+    color: #005fa3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="{{ url_for('static', filename='img/banner.png') }}" alt="IronSocial Logo" class="logo" width="200px">
+                <div class="user-info">
+                    <p>Bienvenido, {{ session['username'] }}</p>
+                    <nav>
+                        <a href="/profile/{{ session['user_id'] }}">
+                            <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="Perfil" width="24" height="24"> Mi Perfil
+                        </a>
+                        <a href="{{ url_for('logout') }}">
+                            <img src="{{ url_for('static', filename='img/cerrar.gif') }}" alt="Cerrar Sesión" width="24" height="24"> Cerrar Sesión
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <aside class="left-sidebar">
+                <h2>Amigos</h2>
+                <ul class="friend-list">
+                    {% for friend in friends %}
+                        <li>
+                            <a href="{{ url_for('profile', user_id=friend['user_id']) }}">
+                                <img src="{{ friend['profile_picture'] }}" alt="Foto de {{ friend['username'] }}" style="width: 180px; height: 120px; object-fit: cover;">
+                                <span>{{ friend['username'] }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </aside>
+            
+           
+
+            <main class="main-content">
+
+                <section class="new-post-form">
+                    <h2>Crear Nuevo Post</h2>
+                    <form action="/add_photo" method="POST">
+                        <label for="photo_url">URL de la Foto:</label>
+                        <input type="text" id="photo_url" name="photo_url" placeholder="Ingrese la URL de la foto" required>
+    
+                        <label for="caption">Descripción:</label>
+                        <textarea id="caption" name="caption" rows="4" placeholder="Escribe una descripción" required></textarea>
+    
+                        <button type="submit">Publicar</button>
+                    </form>
+                </section>
+
+
+
+
+                <h2>Publicaciones Recientes</h2>
+                <section id="posts">
+                    {% for photo in photos %}
+                        <div class="photo">
+                            <img src="{{ photo['photo_url'] }}" alt="Foto">
+                            <p>{{ photo['caption'] }}</p>
+                            <form action="{{ url_for('delete_post', photo_id=photo['photo_id']) }}" method="POST" style="display:inline;">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                            <a href="{{ url_for('edit_post', photo_id=photo['photo_id']) }}">
+                                <button>Editar</button>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </section>
+
+                
+            </main>
+
+            <aside class="right-sidebar">
+                <h2>Otras Publicaciones</h2>
+                <ul class="random-posts">
+                    {% for post in random_posts %}
+                        <li>
+                            <a href="{{ url_for('profile', user_id=post['user_id']) }}">
+                                <img src="{{ post['photo_url'] }}" alt="{{ post['caption'] }}" style="width: 180px; height: 80px; object-fit: cover;">
+                              <br> <span>{{ post['caption'] }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>IronSocial © 2024. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Acerca de IronSocial</a>
+            <a href="#">Términos</a>
+            <a href="https://github.com/ciberzerone/ironSocial">Desarrolladores: ciberzerone</a>
+        </div>
+    </footer>
+</body>
+</html>

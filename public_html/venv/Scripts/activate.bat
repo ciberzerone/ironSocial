@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\usuario\Documents\it\sprint\iron\ironSocial\ironSocial\public_html\venv
+set VIRTUAL_ENV=C:\Users\zerone\OneDrive\Documentos\it\iron\ironSocial\ironSocial\public_html\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

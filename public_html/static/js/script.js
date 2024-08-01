@@ -97,3 +97,10 @@ window.onload = function() {
         });
     }
 };
+
+
+document.querySelectorAll('.post').forEach(post => {
+    post.addEventListener('click', () => {
+        alert('Post clicked!');
+    });
+});
