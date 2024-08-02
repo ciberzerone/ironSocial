@@ -1,9 +1,8 @@
 
 ![logo_ironhack_blue 7](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/banner.PNG)
 
-# ironSocial
 red social Iron : manejo de base de datos, pytnon, javascript, css
-# IronSocial
+
 
 IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los usuarios pueden registrarse, iniciar sesión, publicar fotos, ver perfiles y gestionar amistades. Este proyecto implementa un sistema básico de CRUD (Crear, Leer, Actualizar, Eliminar) en Flask con un frontend en HTML/CSS y una base de datos MySQL.
 
@@ -44,6 +43,27 @@ IronSocial/
 │ └── img/ # Imágenes
 │ └── uploaded_photos/ # Fotos subidas por usuarios
 └── ...
+
+
+
+IronSocial/
+├── app.py                   # Archivo principal de la aplicación Flask
+├── hash_passwords.py        # Script para hashear contraseñas (para desarrollo)
+├── README.md                # Este archivo
+├── requirements.txt         # Dependencias del proyecto
+├── templates/               # Plantillas HTML
+│   ├── index.html
+│   ├── profile.html
+│   ├── posts.html
+│   └── upload.html
+├── static/                  # Archivos estáticos
+│   ├── css/                 # Archivos CSS
+│   │   └── styles.css
+│   ├── js/                  # Archivos JavaScript
+│   │   └── script.js
+│   └── img/                 # Imágenes
+│       └── uploaded_photos/ # Fotos subidas por usuarios
+
 
 
 ## Instalación
