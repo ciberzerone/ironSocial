@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+header nav {
+    margin-top: 10px;
+}
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+header nav a:hover {
+    text-decoration: underline;
+}
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+#profile-info {
+    margin-bottom: 40px;
+}
+#profile-info h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 10px;
+}
+#profile-info p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+#profile-info a {
+    color: #00aaff;
+    text-decoration: none;
+}
+#profile-info a:hover {
+    text-decoration: underline;
+}
+#user-photos {
+    margin-top: 40px;
+}
+#user-photos h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 10px;
+}
+.photo {
+    display: inline-block;
+    width: 45%;
+    margin: 2.5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.photo:hover {
+    transform: scale(1.05);
+}
+.photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.photo p {
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+/* Estilo para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+}
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+footer {
+    background-color: #00aaff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    border-top: 4px solid #0077cc;
+}
+footer p {
+    margin: 0;
+    font-size: 14px;
+}

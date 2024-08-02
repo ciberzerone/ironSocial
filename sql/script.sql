@@ -221,3 +221,4 @@ BEGIN
     INSERT INTO Messages (user_id, message) VALUES (NEW.user_id, 'Bienvenido a IronSocial!');
 END;
 DELIMITER ;
+
