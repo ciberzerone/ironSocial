@@ -24,7 +24,7 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 
 ## Estructura del Proyecto
 
-![estructura](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/estructura.jpg)
+![estructura](https://github.com/ciberzerone/ironSocial/blob/main/imagen/estructura.JPG)
 
 
 ## Instalación
@@ -38,7 +38,7 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/tu_usuario/ironsocial.git
+   git clone https://github.com/ciberzerone/ironsocial.git
    cd ironsocial
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
