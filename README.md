@@ -1,6 +1,11 @@
 
 ![logo_ironhack_blue 7](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/banner.PNG)
 
+
+- [users_table.sql](./sql/script.sql): Sql de la base de datos `ironSocial`.
+- [ironsocial.pdf](./presenta/ironsocial.pdf): Presentacion del proyecto `ironSocial`.
+
+
 red social Iron : manejo de base de datos, pytnon, javascript, css
 
 
@@ -27,11 +32,18 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 ![estructura](https://github.com/ciberzerone/ironSocial/blob/main/imagen/estructura.JPG)
 
 
+## Script Sql aplicados en el proyecto
+1. Crear la base de datos:
+```sql
+CREATE DATABASE IronSocial;
+USE IronSocial;
+```
+
 ## Instalación
 
 ### Prerrequisitos
 
-- Python 3.x
+- Python 3.2
 - MySQL (o MariaDB)
 
 ### Instrucciones
