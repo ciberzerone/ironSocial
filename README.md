@@ -24,46 +24,7 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 
 ## Estructura del Proyecto
 
-IronSocial/
-│
-├── app.py # Archivo principal de la aplicación Flask
-├── hash_passwords.py # Script para hashear contraseñas (para desarrollo)
-├── README.md # Este archivo
-├── requirements.txt # Dependencias del proyecto
-├── templates/ # Plantillas HTML
-│ ├── index.html
-│ ├── profile.html
-│ ├── posts.html
-│ └── upload.html
-├── static/ # Archivos estáticos
-│ ├── css/ # Archivos CSS
-│ │ └── styles.css
-│ ├── js/ # Archivos JavaScript
-│ │ └── script.js
-│ └── img/ # Imágenes
-│ └── uploaded_photos/ # Fotos subidas por usuarios
-└── ...
-
-
-
-IronSocial/
-├── app.py                   # Archivo principal de la aplicación Flask
-├── hash_passwords.py        # Script para hashear contraseñas (para desarrollo)
-├── README.md                # Este archivo
-├── requirements.txt         # Dependencias del proyecto
-├── templates/               # Plantillas HTML
-│   ├── index.html
-│   ├── profile.html
-│   ├── posts.html
-│   └── upload.html
-├── static/                  # Archivos estáticos
-│   ├── css/                 # Archivos CSS
-│   │   └── styles.css
-│   ├── js/                  # Archivos JavaScript
-│   │   └── script.js
-│   └── img/                 # Imágenes
-│       └── uploaded_photos/ # Fotos subidas por usuarios
-
+![estructura](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/estructura.jpg)
 
 
 ## Instalación
