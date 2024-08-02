@@ -1,3 +1,6 @@
+
+![logo_ironhack_blue 7](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/banner.PNG)
+
 # ironSocial
 red social Iron : manejo de base de datos, pytnon, javascript, css
 # IronSocial
