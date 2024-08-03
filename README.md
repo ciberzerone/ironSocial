@@ -46,7 +46,11 @@ CREATE DATABASE IronSocial;
 ```sql
 USE IronSocial;
 ```
-![crear base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
+![usar base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
+
+### Explicación del Comando SQL `USE IronSocial`
+- El comando `USE IronSocial` se utiliza para seleccionar la base de datos `IronSocial` en un entorno de MySQL o MariaDB. Este comando le indica al servidor de base de datos que todas las consultas SQL posteriores se ejecutarán en el contexto de la base de datos `IronSocial`.
+
 
 3. Crear tablas:
 ```sql
@@ -59,7 +63,7 @@ CREATE TABLE Users (
     github VARCHAR(100),
     portfolio VARCHAR(100)
 );
-
+```
 ![crear tabla Users ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla01.PNG)
 
 ### Explicación del Comando SQL `CREATE TABLE Users ...`
