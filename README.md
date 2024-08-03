@@ -36,9 +36,11 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 1. Crear la base de datos:
 ```sql
 CREATE DATABASE IronSocial;
+```
 ![crear base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
 
-```
+
+
 2. Usar la base de datos:
 ```sql
 USE IronSocial;
