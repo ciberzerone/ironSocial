@@ -222,3 +222,48 @@ BEGIN
 END;
 DELIMITER ;
 
+-- 8. TRANSACTION;: ## Implementación de una Transacción con Operaciones de Manipulación de Datos
+
+
+START TRANSACTION;
+
+-- Inserta un nuevo usuario en la tabla Users
+INSERT INTO users (username, password, email, github, portfolio) 
+VALUES ('newuser', 'newpassword_hash', 'newuser@example.com', 'https://github.com/newuser', 'https://newuserportfolio.com');
+
+-- Obtener el ID del usuario recién insertado
+SET @new_user_id = LAST_INSERT_ID();
+
+-- Inserta el perfil asociado al nuevo usuario en la tabla Profiles
+INSERT INTO Profiles (user_id, bio) 
+VALUES (@new_user_id, 'Esta es la biografía de New User');
+
+COMMIT;
+
+
+-- 9. Funciones:  Definidas por el Usuario
+
+-- Función para obtener el número de amigos de un usuario
+CREATE FUNCTION GetFriendCount(user_id INT) RETURNS INT
+BEGIN
+    DECLARE friend_count INT;
+    SELECT COUNT(*) INTO friend_count FROM Friends WHERE user_id = user_id;
+    RETURN friend_count;
+END;
+
+-- Función para obtener el nombre de usuario por ID
+CREATE FUNCTION GetUsername(user_id INT) RETURNS VARCHAR(50)
+BEGIN
+    DECLARE username VARCHAR(50);
+    SELECT username INTO username FROM Users WHERE user_id = user_id;
+    RETURN username;
+END;
+
+-- Función para obtener la URL de la foto más reciente de un usuario
+CREATE FUNCTION GetLatestPhoto(user_id INT) RETURNS VARCHAR(255)
+BEGIN
+    DECLARE photo_url VARCHAR(255);
+    SELECT photo_url INTO photo_url FROM Photos WHERE user_id = user_id ORDER BY upload_date DESC LIMIT 1;
+    RETURN photo_url;
+END;
+

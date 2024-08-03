@@ -39,12 +39,15 @@ CREATE DATABASE IronSocial;
 ```
 ![crear base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
 
-
+### Explicación del Comando SQL `CREATE DATABASE IronSocial`
+- El comando `CREATE DATABASE IronSocial;` se utiliza para crear una nueva base de datos en un servidor de bases de datos MySQL o MariaDB. A continuación se detalla su funcionalidad y propósito:
 
 2. Usar la base de datos:
 ```sql
 USE IronSocial;
 ```
+![crear base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
+
 3. Crear tablas:
 ```sql
 -- Tabla de Users
@@ -56,6 +59,44 @@ CREATE TABLE Users (
     github VARCHAR(100),
     portfolio VARCHAR(100)
 );
+
+![crear tabla Users ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla01.PNG)
+
+### Explicación del Comando SQL `CREATE TABLE Users ...`
+- Este bloque de código crea una tabla llamada `Users` en la base de datos. La tabla está diseñada para almacenar la información básica de los usuarios, como el nombre de usuario, contraseña, correo electrónico, y enlaces a sus perfiles en GitHub y portafolio. A continuación se detallan los campos de la tabla:
+
+### Detalles de los Campos:
+
+- **`user_id INT PRIMARY KEY AUTO_INCREMENT`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
+  - **Descripción**: `user_id` es el identificador único para cada usuario en la tabla. Se genera automáticamente de manera incremental para cada nuevo registro.
+
+- **`username VARCHAR(50) NOT NULL UNIQUE`:**
+  - **Tipo**: `VARCHAR(50)`
+  - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
+  - **Descripción**: `username` almacena el nombre de usuario elegido por el usuario. Debe ser único en la base de datos, lo que asegura que no haya dos usuarios con el mismo nombre.
+
+- **`password VARCHAR(255) NOT NULL`:**
+  - **Tipo**: `VARCHAR(255)`
+  - **Propiedades**: No nulo (`NOT NULL`).
+  - **Descripción**: `password` almacena la contraseña del usuario. La longitud de 255 caracteres permite almacenar contraseñas hasheadas.
+
+- **`email VARCHAR(100) NOT NULL UNIQUE`:**
+  - **Tipo**: `VARCHAR(100)`
+  - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
+  - **Descripción**: `email` almacena la dirección de correo electrónico del usuario. Debe ser único para garantizar que cada correo electrónico esté asociado a un solo usuario.
+
+- **`github VARCHAR(100)`:**
+  - **Tipo**: `VARCHAR(100)`
+  - **Descripción**: `github` almacena la URL del perfil de GitHub del usuario. Este campo es opcional, por lo que puede quedar vacío.
+
+- **`portfolio VARCHAR(100)`:**
+  - **Tipo**: `VARCHAR(100)`
+  - **Descripción**: `portfolio` almacena la URL del portafolio personal del usuario. Este campo también es opcional.
+
+
+
 
 -- Tabla de Perfiles (One-to-One con Users)
 CREATE TABLE Profiles (
@@ -295,13 +336,56 @@ DELIMITER ;
 
 ```sql
 
+START TRANSACTION;
 
+-- Inserta un nuevo usuario en la tabla Users
+INSERT INTO users (username, password, email, github, portfolio) 
+VALUES ('newuser', 'newpassword_hash', 'newuser@example.com', 'https://github.com/newuser', 'https://newuserportfolio.com');
+
+-- Obtener el ID del usuario recién insertado
+SET @new_user_id = LAST_INSERT_ID();
+
+-- Inserta el perfil asociado al nuevo usuario en la tabla Profiles
+INSERT INTO Profiles (user_id, bio) 
+VALUES (@new_user_id, 'Esta es la biografía de New User');
+
+COMMIT; // Confirma la transacción:
 
 ```  
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/transaction01.PNG)
+
+### Explicación TRANSACTION: 
+La transacción realiza la inserción de un nuevo usuario y la creación de su perfil asociado. Se asegura de que ambas operaciones se completen con éxito.
+
 
 9. Funciones:
 
 ```sql
+
+ Función para obtener el número de amigos de un usuario
+CREATE FUNCTION GetFriendCount(user_id INT) RETURNS INT
+BEGIN
+    DECLARE friend_count INT;
+    SELECT COUNT(*) INTO friend_count FROM Friends WHERE user_id = user_id;
+    RETURN friend_count;
+END;
+
+-- Función para obtener el nombre de usuario por ID
+CREATE FUNCTION GetUsername(user_id INT) RETURNS VARCHAR(50)
+BEGIN
+    DECLARE username VARCHAR(50);
+    SELECT username INTO username FROM Users WHERE user_id = user_id;
+    RETURN username;
+END;
+
+-- Función para obtener la URL de la foto más reciente de un usuario
+CREATE FUNCTION GetLatestPhoto(user_id INT) RETURNS VARCHAR(255)
+BEGIN
+    DECLARE photo_url VARCHAR(255);
+    SELECT photo_url INTO photo_url FROM Photos WHERE user_id = user_id ORDER BY upload_date DESC LIMIT 1;
+    RETURN photo_url;
+END;
+
 
 
 
