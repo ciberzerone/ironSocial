@@ -65,8 +65,6 @@ CREATE TABLE Users (
 ### Explicación del Comando SQL `CREATE TABLE Users ...`
 - Este bloque de código crea una tabla llamada `Users` en la base de datos. La tabla está diseñada para almacenar la información básica de los usuarios, como el nombre de usuario, contraseña, correo electrónico, y enlaces a sus perfiles en GitHub y portafolio. A continuación se detallan los campos de la tabla:
 
-### Detalles de los Campos:
-
 - **`user_id INT PRIMARY KEY AUTO_INCREMENT`:**
   - **Tipo**: `INT`
   - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
