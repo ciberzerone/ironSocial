@@ -68,35 +68,35 @@ CREATE TABLE Users (
 ![crear tabla Users ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla01.PNG)
 
 #### Explicación del Comando SQL `CREATE TABLE Users ...`
-- Este bloque de código crea una tabla llamada `Users` en la base de datos. La tabla está diseñada para almacenar la información básica de los usuarios, como el nombre de usuario, contraseña, correo electrónico, y enlaces a sus perfiles en GitHub y portafolio. A continuación se detallan los campos de la tabla:
+  - Este bloque de código crea una tabla llamada `Users` en la base de datos. La tabla está diseñada para almacenar la información básica de los usuarios, como el nombre de usuario, contraseña, correo electrónico, y enlaces a sus perfiles en GitHub y portafolio. A continuación se detallan los campos de la tabla:
 
-- **`user_id INT PRIMARY KEY AUTO_INCREMENT`:**
-  - **Tipo**: `INT`
-  - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
-  - **Descripción**: `user_id` es el identificador único para cada usuario en la tabla. Se genera automáticamente de manera incremental para cada nuevo registro.
+  - **`user_id INT PRIMARY KEY AUTO_INCREMENT`:**
+    - **Tipo**: `INT`
+    - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
+    - **Descripción**: `user_id` es el identificador único para cada usuario en la tabla. Se genera automáticamente de manera incremental para cada nuevo registro.
 
-- **`username VARCHAR(50) NOT NULL UNIQUE`:**
-  - **Tipo**: `VARCHAR(50)`
-  - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
-  - **Descripción**: `username` almacena el nombre de usuario elegido por el usuario. Debe ser único en la base de datos, lo que asegura que no haya dos usuarios con el mismo nombre.
+  - **`username VARCHAR(50) NOT NULL UNIQUE`:**
+    - **Tipo**: `VARCHAR(50)`
+    - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
+    - **Descripción**: `username` almacena el nombre de usuario elegido por el usuario. Debe ser único en la base de datos, lo que asegura que no haya dos usuarios con el mismo nombre.
 
-- **`password VARCHAR(255) NOT NULL`:**
-  - **Tipo**: `VARCHAR(255)`
-  - **Propiedades**: No nulo (`NOT NULL`).
-  - **Descripción**: `password` almacena la contraseña del usuario. La longitud de 255 caracteres permite almacenar contraseñas hasheadas.
+  - **`password VARCHAR(255) NOT NULL`:**
+    - **Tipo**: `VARCHAR(255)`
+    - **Propiedades**: No nulo (`NOT NULL`).
+    - **Descripción**: `password` almacena la contraseña del usuario. La longitud de 255 caracteres permite almacenar contraseñas hasheadas.
 
-- **`email VARCHAR(100) NOT NULL UNIQUE`:**
-  - **Tipo**: `VARCHAR(100)`
-  - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
-  - **Descripción**: `email` almacena la dirección de correo electrónico del usuario. Debe ser único para garantizar que cada correo electrónico esté asociado a un solo usuario.
+  - **`email VARCHAR(100) NOT NULL UNIQUE`:**
+    - **Tipo**: `VARCHAR(100)`
+    - **Propiedades**: No nulo (`NOT NULL`), Único (`UNIQUE`).
+    - **Descripción**: `email` almacena la dirección de correo electrónico del usuario. Debe ser único para garantizar que cada correo electrónico esté asociado a un solo usuario.
 
-- **`github VARCHAR(100)`:**
-  - **Tipo**: `VARCHAR(100)`
-  - **Descripción**: `github` almacena la URL del perfil de GitHub del usuario. Este campo es opcional, por lo que puede quedar vacío.
+  - **`github VARCHAR(100)`:**
+    - **Tipo**: `VARCHAR(100)`
+    - **Descripción**: `github` almacena la URL del perfil de GitHub del usuario. Este campo es opcional, por lo que puede quedar vacío.
 
-- **`portfolio VARCHAR(100)`:**
-  - **Tipo**: `VARCHAR(100)`
-  - **Descripción**: `portfolio` almacena la URL del portafolio personal del usuario. Este campo también es opcional.
+  - **`portfolio VARCHAR(100)`:**
+    - **Tipo**: `VARCHAR(100)`
+    - **Descripción**: `portfolio` almacena la URL del portafolio personal del usuario. Este campo también es opcional.
 
 
 <hr>
