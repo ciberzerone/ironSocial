@@ -33,7 +33,8 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 
 
 ## Script Sql aplicados en el proyecto
-1. Crear la base de datos:
+
+### 1. Crear la base de datos:
 ```sql
 CREATE DATABASE IronSocial;
 ```
@@ -42,17 +43,18 @@ CREATE DATABASE IronSocial;
 ### Explicación del Comando SQL `CREATE DATABASE IronSocial`
 - El comando `CREATE DATABASE IronSocial;` se utiliza para crear una nueva base de datos en un servidor de bases de datos MySQL o MariaDB. A continuación se detalla su funcionalidad y propósito:
 
-2. Usar la base de datos:
+### 2. Usar la base de datos:
 ```sql
 USE IronSocial;
 ```
-![usar base datos](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1crearBdIronSocial.PNG)
 
-### Explicación del Comando SQL `USE IronSocial`
+#### Explicación del Comando SQL `USE IronSocial`
 - El comando `USE IronSocial` se utiliza para seleccionar la base de datos `IronSocial` en un entorno de MySQL o MariaDB. Este comando le indica al servidor de base de datos que todas las consultas SQL posteriores se ejecutarán en el contexto de la base de datos `IronSocial`.
 
 
-3. Crear tablas:
+### 3. Crear tablas:
+
+#### Tabla de Users
 ```sql
 -- Tabla de Users
 CREATE TABLE Users (
@@ -66,7 +68,7 @@ CREATE TABLE Users (
 ```
 ![crear tabla Users ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla01.PNG)
 
-### Explicación del Comando SQL `CREATE TABLE Users ...`
+#### Explicación del Comando SQL `CREATE TABLE Users ...`
 - Este bloque de código crea una tabla llamada `Users` en la base de datos. La tabla está diseñada para almacenar la información básica de los usuarios, como el nombre de usuario, contraseña, correo electrónico, y enlaces a sus perfiles en GitHub y portafolio. A continuación se detallan los campos de la tabla:
 
 - **`user_id INT PRIMARY KEY AUTO_INCREMENT`:**
@@ -99,7 +101,7 @@ CREATE TABLE Users (
 
 
 
-
+#### Tabla de Perfiles
 -- Tabla de Perfiles (One-to-One con Users)
 CREATE TABLE Profiles (
     profile_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -118,6 +120,9 @@ CREATE TABLE Photos (
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
+![crear tabla Photos ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla02.PNG)
+
+
 
 -- Tabla de Friends (Many-to-Many entre Usuarios)
 CREATE TABLE Friends (
@@ -127,6 +132,9 @@ CREATE TABLE Friends (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
+
+
+![crear tabla Friends ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
 
 -- Tabla de Comentarios (One-to-Many con Photos)
 CREATE TABLE Comments (
@@ -139,6 +147,11 @@ CREATE TABLE Comments (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 ```
+
+![crear tabla Comments ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla04.PNG)
+
+
+
 4. Relaciones entre tablas:
 ```sql 
 
@@ -156,6 +169,13 @@ FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
  FOREIGN KEY (photo_id) REFERENCES Photos(photo_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 ```
+
+
+
+![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla05.PNG)
+
+
+![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla06.PNG)
 5. Contenido de las tablas:
 
 ```sql 
