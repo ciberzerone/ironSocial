@@ -134,7 +134,10 @@ CREATE TABLE Friends (
 );
 
 
-![crear tabla Friends ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
+![crear tabla Comments ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla04.PNG)
+
+
+
 
 -- Tabla de Comentarios (One-to-Many con Photos)
 CREATE TABLE Comments (
@@ -148,9 +151,7 @@ CREATE TABLE Comments (
 );
 ```
 
-![crear tabla Comments ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla04.PNG)
-
-
+![crear tabla Friends ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
 
 4. Relaciones entre tablas:
 ```sql 
