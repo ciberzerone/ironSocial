@@ -102,6 +102,7 @@ CREATE TABLE Users (
 <hr>
 
 #### Tabla de Perfiles
+```sql
 -- Tabla de Perfiles (One-to-One con Users)
 CREATE TABLE Profiles (
     profile_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -109,13 +110,14 @@ CREATE TABLE Profiles (
     bio TEXT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
-
+```
 ![crear tabla Perfiles ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla02.PNG)
 
 <hr>
 
 #### Tabla de Photos
 
+```sql
 -- Tabla de Photos (One-to-Many con Users)
 CREATE TABLE Photos (
     photo_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -125,10 +127,14 @@ CREATE TABLE Photos (
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
+```
+
 ![crear tabla Photos ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
 
+<hr>
 
-
+#### Tabla Friends
+```sql
 -- Tabla de Friends (Many-to-Many entre Usuarios)
 CREATE TABLE Friends (
     user_id INT,
@@ -137,13 +143,15 @@ CREATE TABLE Friends (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
-
+```
 
 ![crear tabla Comments ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla04.PNG)
 
+<hr>
 
+#### Tabla Comments
 
-
+```sql
 -- Tabla de Comentarios (One-to-Many con Photos)
 CREATE TABLE Comments (
     comment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -157,6 +165,9 @@ CREATE TABLE Comments (
 ```
 
 ![crear tabla Friends ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
+
+
+
 
 4. Relaciones entre tablas:
 ```sql 
