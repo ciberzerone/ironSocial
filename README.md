@@ -2,7 +2,7 @@
 ![logo_ironhack_blue 7](https://github.com/ciberzerone/ironSocial/blob/main/public_html/static/img/banner.PNG)
 
 
-- [users_table.sql](./sql/script.sql): Sql de la base de datos `ironSocial`.
+- [script.sql](./sql/script.sql): Sql de la base de datos `ironSocial`.
 - [ironsocial.pdf](./presenta/ironsocial.pdf): Presentacion del proyecto `ironSocial`.
 
 
