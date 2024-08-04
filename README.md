@@ -164,7 +164,7 @@ CREATE TABLE Comments (
 );
 ```
 
-![crear tabla Friends ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
+![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla05.PNG)
 
 
 
@@ -189,10 +189,12 @@ FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
 
 
 
-![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla05.PNG)
 
 
-![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla06.PNG)
+
+![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/erDiagrama.JPG)
+
+
 5. Contenido de las tablas:
 
 ```sql 
@@ -293,6 +295,8 @@ INSERT INTO Comments (photo_id, user_id, comment_text) VALUES
 (9, 10, 'Me encanta tu estilo, Kelly.');
 
 ``` 
+
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/5ContenidoTabla.PNG)
 
 6. Búsquedas:
 - Búsquedas simples:
