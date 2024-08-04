@@ -25,7 +25,6 @@ IronSocial es una red social diseñada para alumnos y exalumnos de Ironhack. Los
 - **Base de Datos**: MySQL (MariaDB)
 - **Frontend**: HTML, CSS, JavaScript
 - **Autenticación**: Werkzeug para hashear y verificar contraseñas
-- **Gestión de Sesión**: Flask Sessions
 
 ## Estructura del Proyecto
 
@@ -100,6 +99,7 @@ CREATE TABLE Users (
   - **Descripción**: `portfolio` almacena la URL del portafolio personal del usuario. Este campo también es opcional.
 
 
+<hr>
 
 #### Tabla de Perfiles
 -- Tabla de Perfiles (One-to-One con Users)
@@ -110,6 +110,11 @@ CREATE TABLE Profiles (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
+![crear tabla Perfiles ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla02.PNG)
+
+<hr>
+
+#### Tabla de Photos
 
 -- Tabla de Photos (One-to-Many con Users)
 CREATE TABLE Photos (
@@ -120,7 +125,7 @@ CREATE TABLE Photos (
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
-![crear tabla Photos ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla02.PNG)
+![crear tabla Photos ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
 
 
 
