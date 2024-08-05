@@ -412,7 +412,11 @@ BEGIN
     SELECT COUNT(*) INTO friend_count FROM Friends WHERE user_id = user_id;
     RETURN friend_count;
 END;
+```  
 
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion01.PNG)
+
+```sql
 -- Función para obtener el nombre de usuario por ID
 CREATE FUNCTION GetUsername(user_id INT) RETURNS VARCHAR(50)
 BEGIN
@@ -421,6 +425,12 @@ BEGIN
     RETURN username;
 END;
 
+
+```sql
+
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion02.PNG)
+
+```  
 -- Función para obtener la URL de la foto más reciente de un usuario
 CREATE FUNCTION GetLatestPhoto(user_id INT) RETURNS VARCHAR(255)
 BEGIN
@@ -429,10 +439,8 @@ BEGIN
     RETURN photo_url;
 END;
 
-
 ```  
-![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion01.PNG)
-![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion02.PNG)
+
 ![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion03.PNG)
 ## Instalación
 
