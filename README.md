@@ -44,12 +44,14 @@ CREATE DATABASE IronSocial;
 
 ### 2. Usar la base de datos:
 ```sql
+
 USE IronSocial;
+
 ```
 
 #### Explicación del Comando SQL `USE IronSocial`
-- El comando `USE IronSocial` se utiliza para seleccionar la base de datos `IronSocial` en un entorno de MySQL o MariaDB. Este comando le indica al servidor de base de datos que todas las consultas SQL posteriores se ejecutarán en el contexto de la base de datos `IronSocial`.
 
+- El comando `USE IronSocial` se utiliza para seleccionar la base de datos `IronSocial` en un entorno de MySQL o MariaDB. Este comando le indica al servidor de base de datos que todas las consultas SQL posteriores se ejecutarán en el contexto de la base de datos `IronSocial`.
 
 ### 3. Crear tablas:
 
@@ -169,7 +171,7 @@ CREATE TABLE Comments (
 
 
 
-4. Relaciones entre tablas:
+### 4. Relaciones entre tablas:
 ```sql 
 
 -- One-to-One Perfiles con Users
@@ -195,7 +197,7 @@ FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE
 ![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/erDiagrama.JPG)
 
 
-5. Contenido de las tablas:
+### 5. Contenido de las tablas:
 
 ```sql 
 
@@ -298,54 +300,105 @@ INSERT INTO Comments (photo_id, user_id, comment_text) VALUES
 
 ![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/5ContenidoTabla.PNG)
 
-6. Búsquedas:
-- Búsquedas simples:
+### 6. Búsquedas:
 
+#### Búsquedas simples:
+
+
+#### Seleccionar todos los usuarios
 ```sql 
 
 -- Seleccionar todos los usuarios
 SELECT * FROM Users;
+```
 
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.1.PNG)
+ #### Seleccionar usuarios con un ID par
+```sql 
 -- Seleccionar usuarios con un ID par
 SELECT * FROM Users WHERE MOD(user_id, 2) = 0;
+```
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.2.PNG)
 
+#### Ordenar usuarios por nombre de usuario
+```sql 
 -- Ordenar usuarios por nombre de usuario
 SELECT * FROM Users ORDER BY username ASC;
+```
 
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.3.PNG)
+
+
+#### Limitar resultados a 5 usuarios
+```sql 
 -- Limitar resultados a 5 usuarios
 SELECT * FROM Users LIMIT 5;
+```
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.4.PNG)
 
+#### Buscar usuarios con github definido
+```sql 
 -- Buscar usuarios con github definido
 SELECT * FROM Users WHERE github IS NOT NULL;
+```
 
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.5.PNG)
 
+#### Contar el número de usuarios con portafolio
+```sql 
 -- Contar el número de usuarios con portafolio
 SELECT COUNT(*) FROM Users WHERE portfolio IS NOT NULL;
 
 ```
+![contenido de lastablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.1.6.PNG)
 
-- Búsquedas complejas:
+
+
+#### Búsquedas complejas:
+
+#### Subconsulta para encontrar usuarios
 ```sql 
 -- Subconsulta para encontrar usuarios con más de 1 foto subida
 SELECT username FROM Users WHERE user_id IN (
     SELECT user_id FROM Photos GROUP BY user_id HAVING COUNT(*) > 1
 );
+```
+![Subconsulta para encontrar usuarios ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.2.1.PNG)
 
+####  JOIN para obtener fotos y los comentarios asociados
+```sql 
 -- JOIN para obtener fotos y los comentarios asociados
 SELECT Photos.photo_url, Comments.comment_text FROM Photos
 JOIN Comments ON Photos.photo_id = Comments.photo_id;
+```
 
+![JOIN para obtener fotos y los comentarios ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.2.3.PNG)
+
+
+#### Agregación para contar el número de fotos por usuario
+```sql 
 -- Agregación para contar el número de fotos por usuario
 SELECT Users.username, COUNT(Photos.photo_id) as total_photos FROM Users
 LEFT JOIN Photos ON Users.user_id = Photos.user_id
 GROUP BY Users.username;
+```
+![Agregación para contar ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.2.3.PNG)
 
+
+####  Subconsulta anidada para encontrar fotos con más de un comentario
+```sql 
 -- Subconsulta anidada para encontrar fotos con más de un comentario
 SELECT photo_url FROM Photos WHERE photo_id IN (
     SELECT photo_id FROM Comments GROUP BY photo_id HAVING COUNT(comment_id) > 1
 );
 ```
-7. Búsquedas:
+
+![Subconsulta anidada ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/6.2.4.PNG)
+
+### 7. Triggers:
+
+#### Trigger para mantener el recuento de fotos 
+
 ```sql 
 -- Trigger para mantener el recuento de fotos de un usuario
 DELIMITER //
@@ -360,8 +413,11 @@ BEGIN
 END //
 
 DELIMITER ;
+```
 
+#### Trigger para mantener el recuento de fotos 
 
+```sql
 -- Trigger para enviar un mensaje de bienvenida al crear un perfil
 
 DELIMITER //
@@ -375,7 +431,7 @@ DELIMITER ;
 
 ``` 
 
-8. Transacciones:
+### 8. Transacciones:
 
 ```sql
 
@@ -401,11 +457,11 @@ COMMIT; // Confirma la transacción:
 La transacción realiza la inserción de un nuevo usuario y la creación de su perfil asociado. Se asegura de que ambas operaciones se completen con éxito.
 
 
-9. Funciones:
+### 9. Funciones:
 
 ```sql
 
- Función para obtener el número de amigos de un usuario
+-- Función para obtener el número de amigos de un usuario
 CREATE FUNCTION GetFriendCount(user_id INT) RETURNS INT
 BEGIN
     DECLARE friend_count INT;
@@ -414,7 +470,7 @@ BEGIN
 END;
 ```  
 
-![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion01.PNG)
+![Función para obtener el número de amigos de un usuario ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion01.PNG)
 
 ```sql
 -- Función para obtener el nombre de usuario por ID
@@ -426,11 +482,12 @@ BEGIN
 END;
 
 
+
+```
+
+![Función para obtener el nombre de usuario por ID ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion02.PNG)
+
 ```sql
-
-![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion02.PNG)
-
-```  
 -- Función para obtener la URL de la foto más reciente de un usuario
 CREATE FUNCTION GetLatestPhoto(user_id INT) RETURNS VARCHAR(255)
 BEGIN
@@ -441,7 +498,10 @@ END;
 
 ```  
 
-![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion03.PNG)
+![Función para obtener la URL de la foto ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion03.PNG)
+
+
+
 ## Instalación
 
 ### Prerrequisitos
