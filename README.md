@@ -415,6 +415,8 @@ END //
 DELIMITER ;
 ```
 
+![Trigger para mantener el recuento de fotos  ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/7.1.PNG)
+
 #### Trigger para mantener el recuento de fotos 
 
 ```sql
@@ -430,6 +432,8 @@ END;
 DELIMITER ;
 
 ``` 
+![Trigger parapara enviar un mensaje de bienvenida al crear un perfil  ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/7.2.PNG)
+
 
 ### 8. Transacciones:
 
