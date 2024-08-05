@@ -430,11 +430,10 @@ BEGIN
 END;
 
 
-
-
 ```  
-
-
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion01.PNG)
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion02.PNG)
+![TRANSACTION ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/funcion03.PNG)
 ## Instalación
 
 ### Prerrequisitos
