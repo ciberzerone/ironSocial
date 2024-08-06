@@ -113,7 +113,33 @@ CREATE TABLE Profiles (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 ```
+
+
+
 ![crear tabla Perfiles ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla02.PNG)
+
+
+#### Explicación del Comando SQL `CREATE TABLE Profiles (...`
+  - Crea una tabla llamada `Profiles` diseñada para almacenar información adicional sobre los usuarios.
+
+- **`profile_id INT PRIMARY KEY AUTO_INCREMENT`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
+  - **Descripción**: `profile_id` es el identificador único para cada perfil en la tabla `Profiles`. Se genera automáticamente de manera incremental con cada nuevo registro.
+
+- **`user_id INT NOT NULL`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: No nulo (`NOT NULL`), Clave foránea.
+  - **Descripción**: `user_id` es un campo que almacena el identificador del usuario al que pertenece el perfil. Está relacionado con la columna `user_id` de la tabla `Users`, creando una relación uno a uno entre `Users` y `Profiles`.
+
+- **`bio TEXT`:**
+  - **Tipo**: `TEXT`
+  - **Descripción**: `bio` almacena la biografía del usuario. Este campo es opcional y permite almacenar texto de longitud variable.
+
+- **`FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE`:**
+  - **Propósito**: Define una clave foránea que conecta `user_id` en la tabla `Profiles` con `user_id` en la tabla `Users`.
+  - **`ON DELETE CASCADE`**: Esta opción asegura que si un registro en la tabla `Users` es eliminado, el perfil asociado en la tabla `Profiles` también será eliminado automáticamente. Esto mantiene la integridad referencial entre las dos tablas.
+
 
 <hr>
 
@@ -133,6 +159,39 @@ CREATE TABLE Photos (
 
 ![crear tabla Photos ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla03.PNG)
 
+
+#### Explicación del Comando SQL `CREATE TABLE Photos (...`
+Esta tabla está diseñada para almacenar información sobre las fotos subidas por los usuarios.
+
+- **`photo_id INT PRIMARY KEY AUTO_INCREMENT`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
+  - **Descripción**: `photo_id` es el identificador único para cada foto en la tabla `Photos`. Se genera automáticamente de manera incremental con cada nuevo registro.
+
+- **`user_id INT NOT NULL`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: No nulo (`NOT NULL`), Clave foránea.
+  - **Descripción**: `user_id` es un campo que almacena el identificador del usuario que subió la foto. Está relacionado con la columna `user_id` de la tabla `Users`, creando una relación uno a muchos entre `Users` y `Photos`.
+
+- **`photo_url VARCHAR(255) NOT NULL`:**
+  - **Tipo**: `VARCHAR(255)`
+  - **Propiedades**: No nulo (`NOT NULL`).
+  - **Descripción**: `photo_url` almacena la URL de la foto. Este campo es obligatorio.
+
+- **`caption TEXT`:**
+  - **Tipo**: `TEXT`
+  - **Descripción**: `caption` almacena una descripción o subtítulo para la foto. Este campo es opcional y permite almacenar texto de longitud variable.
+
+- **`upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP`:**
+  - **Tipo**: `TIMESTAMP`
+  - **Propiedades**: Valor por defecto (`DEFAULT CURRENT_TIMESTAMP`).
+  - **Descripción**: `upload_date` almacena la fecha y hora en que la foto fue subida. Se establece automáticamente en la fecha y hora actuales al momento de la inserción del registro.
+
+- **`FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE`:**
+  - **Propósito**: Define una clave foránea que conecta `user_id` en la tabla `Photos` con `user_id` en la tabla `Users`.
+  - **`ON DELETE CASCADE`**: Esta opción asegura que si un registro en la tabla `Users` es eliminado, todas las fotos asociadas en la tabla `Photos` también serán eliminadas automáticamente. Esto mantiene la integridad referencial entre las dos tablas.
+
+
 <hr>
 
 #### Tabla Friends
@@ -148,6 +207,28 @@ CREATE TABLE Friends (
 ```
 
 ![crear tabla Comments ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla04.PNG)
+
+
+#### Explicación del Comando SQL `CREATE TABLE Friends (...`
+Se utiliza para gestionar las relaciones de amistad entre usuarios en la base de datos.
+
+- **`user_id INT`:**
+  - **Tipo**: `INT`
+  - **Descripción**: `user_id` representa el identificador del usuario que tiene una relación de amistad con otro usuario. Este campo actúa como parte de la clave primaria y como clave foránea que referencia el campo `user_id` de la tabla `Users`.
+
+- **`friend_id INT`:**
+  - **Tipo**: `INT`
+  - **Descripción**: `friend_id` representa el identificador del amigo del usuario. Al igual que `user_id`, este campo es parte de la clave primaria y también es una clave foránea que referencia el campo `user_id` de la tabla `Users`.
+
+- **`PRIMARY KEY (user_id, friend_id)`:**
+  - **Descripción**: Define una clave primaria compuesta por los campos `user_id` y `friend_id`. Esto asegura que cada par de relaciones de amistad sea único, impidiendo que se duplique una relación entre dos usuarios.
+
+- **`FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE`:**
+  - **Descripción**: Establece una clave foránea que conecta `user_id` en la tabla `Friends` con `user_id` en la tabla `Users`. La cláusula `ON DELETE CASCADE` asegura que si un usuario es eliminado de la tabla `Users`, todas las relaciones de amistad asociadas con ese usuario también serán eliminadas automáticamente.
+
+- **`FOREIGN KEY (friend_id) REFERENCES Users(user_id) ON DELETE CASCADE`:**
+  - **Descripción**: Establece una clave foránea que conecta `friend_id` en la tabla `Friends` con `user_id` en la tabla `Users`. Al igual que la clave foránea anterior, la cláusula `ON DELETE CASCADE` asegura que si un usuario es eliminado, todas las relaciones de amistad asociadas también se eliminen automáticamente.
+
 
 <hr>
 
@@ -169,7 +250,42 @@ CREATE TABLE Comments (
 ![Relaciones entre tablas ](https://github.com/ciberzerone/ironSocial/blob/main/imagen/1creartabla05.PNG)
 
 
+#### Explicación del Comando SQL `CREATE TABLE Comments (...`
+Esta tabla está diseñada para almacenar los comentarios que los usuarios hacen en las fotos.
 
+- **`comment_id INT PRIMARY KEY AUTO_INCREMENT`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: Clave primaria (`PRIMARY KEY`), Auto-incremental (`AUTO_INCREMENT`).
+  - **Descripción**: `comment_id` es el identificador único para cada comentario en la tabla `Comments`. Se genera automáticamente de manera incremental con cada nuevo registro.
+
+- **`photo_id INT NOT NULL`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: No nulo (`NOT NULL`), Clave foránea.
+  - **Descripción**: `photo_id` es un campo que almacena el identificador de la foto en la cual se ha hecho el comentario. Está relacionado con la columna `photo_id` de la tabla `Photos`, creando una relación uno a muchos entre `Photos` y `Comments`.
+
+- **`user_id INT NOT NULL`:**
+  - **Tipo**: `INT`
+  - **Propiedades**: No nulo (`NOT NULL`), Clave foránea.
+  - **Descripción**: `user_id` es un campo que almacena el identificador del usuario que hizo el comentario. Está relacionado con la columna `user_id` de la tabla `Users`, indicando quién realizó el comentario.
+
+- **`comment_text TEXT NOT NULL`:**
+  - **Tipo**: `TEXT`
+  - **Propiedades**: No nulo (`NOT NULL`).
+  - **Descripción**: `comment_text` almacena el contenido del comentario. Este campo es obligatorio y puede contener texto de longitud variable.
+
+- **`comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP`:**
+  - **Tipo**: `TIMESTAMP`
+  - **Propiedades**: Valor por defecto (`DEFAULT CURRENT_TIMESTAMP`).
+  - **Descripción**: `comment_date` almacena la fecha y hora en que se realizó el comentario. Se establece automáticamente en la fecha y hora actuales al momento de la inserción del registro.
+
+- **`FOREIGN KEY (photo_id) REFERENCES Photos(photo_id) ON DELETE CASCADE`:**
+  - **Descripción**: Establece una clave foránea que conecta `photo_id` en la tabla `Comments` con `photo_id` en la tabla `Photos`. La cláusula `ON DELETE CASCADE` asegura que si una foto es eliminada, todos los comentarios asociados en la tabla `Comments` también serán eliminados automáticamente.
+
+- **`FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE`:**
+  - **Descripción**: Establece una clave foránea que conecta `user_id` en la tabla `Comments` con `user_id` en la tabla `Users`. La cláusula `ON DELETE CASCADE` asegura que si un usuario es eliminado, todos los comentarios asociados con ese usuario también serán eliminados automáticamente.
+
+
+<hr>
 
 ### 4. Relaciones entre tablas:
 ```sql 
