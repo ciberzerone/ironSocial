@@ -637,16 +637,16 @@ END;
    cd ironsocial
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
-
+```
 2. Crear un entorno virtual (opcional pero recomendado):
   ```bash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
-
+```
 3. Instalar las dependencias:
   ```bash
 pip install -r requirements.txt
-
+```
 
 4. Configurar la base de datos:
 
@@ -658,7 +658,7 @@ pip install -r requirements.txt
 
   ```bash
   python app.py
-
+```
 ### Uso
 Registro: Dirígete a la página principal y regístrate como nuevo usuario.
 Inicio de Sesión: Usa tu correo y contraseña para iniciar sesión.
@@ -675,6 +675,6 @@ Crea un nuevo Pull Request.
 Licencia
 Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
-Contacto
+### Contacto
 Para cualquier consulta o sugerencia, puedes contactarme a través de [gianmarcobeltran@gmail.com] o tu perfil de LinkedIn.
 
